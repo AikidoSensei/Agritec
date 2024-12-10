@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Gwendolyn:wght@400;700&family=Ibarra+Real+Nova:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  /* background: radial-gradient(#242424, #242424 80%); */
+  /* background-color: white ; */
+  /* background: url('/images/aboutus.jpg') center center/cover */
+}
+html{
+  scroll-behavior: smooth;
+}
+/* #5a47ce */
+body {
+  margin: 0;
+  background-position: cover;
+  overflow-x: hidden;
+  overflow-y: h; 
+  background-color: white
+}
+h1{
+  margin:0
+}
+.outline-text {
+  -webkit-text-stroke: 1px white;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.swiper-slide {
+  font-size: 18px;
+  color: #fff;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 40px 60px;
+}
+
+.parallax-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 130%;
+  height: 100%;
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+.swiper-slide .subtitle {
+  font-size: 21px;
+}
+
+.swiper-slide .text {
+
+  line-height: 1.3;
+}
