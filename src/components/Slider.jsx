@@ -17,7 +17,7 @@ export default function Slide() {
 				style={{
 					'--swiper-navigation-color': '#fff',
 					'--swiper-pagination-color': '#fff',
-					'--swiper-navigation-size': '20px'
+					'--swiper-navigation-size': '20px',
 				}}
 				speed={600}
 				parallax={true}
@@ -38,25 +38,36 @@ export default function Slide() {
 					data-swiper-parallax='-23%'
 				></div>
 				<SwiperSlide className=' bg-red-500'>
-					<div className='title text-2xl md:text-3xl font-light' data-swiper-parallax='-300'>
+					<div
+						className='title text-xl md:text-3xl font-light w-full'
+						data-swiper-parallax='-300'
+					>
 						Our Mission
 					</div>
 
-					<div className='text text-[8pt] md:text-sm' data-swiper-parallax='-100'>
+					<div
+						className='text text-[8pt] md:text-sm w-full'
+						data-swiper-parallax='-100'
+					>
 						<p>
 							To bridge the gap between agriculture and technology, delivering
-							impactful solutions that empower stakeholders, promote
-							sustainability, and create lasting change in the agricultural
-							ecosystem.
+							impactful solutions that empower stakeholders and promote
+							sustainability.
 						</p>
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
-					<div className='title' data-swiper-parallax='-300'>
+					<div
+						className='title text-xl md:text-3xl font-light w-full'
+						data-swiper-parallax='-300'
+					>
 						Our Vision
 					</div>
 
-					<div className='text' data-swiper-parallax='-100'>
+					<div
+						className='text text-[8pt] md:text-sm '
+						data-swiper-parallax='-100'
+					>
 						<p>
 							A world where technology enables food security, fosters economic
 							empowerment, and nurtures the environment—one farm at a time.
@@ -64,11 +75,16 @@ export default function Slide() {
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
-					<div className='title' data-swiper-parallax='-300'>
-						How we are changing lives
+					<div
+						className='title text-md md:text-3xl font-light w-full'
+						data-swiper-parallax='-300'
+					>
 					</div>
 
-					<div className='text' data-swiper-parallax='-100'>
+					<div
+						className='text text-[5pt] md:text-sm '
+						data-swiper-parallax='-100'
+					>
 						<p>
 							From smallholder farmers to large-scale agribusinesses, we are
 							making a difference. By providing cutting-edge tools, data-driven
