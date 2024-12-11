@@ -3,6 +3,7 @@ import { useEffect, useState, useMemo } from 'react'
 import Lottie from 'lottie-react'
 import gif1 from './gif1.json'
 import gif2 from './gif2.json'
+import approved from './approved.json'
 import Discover from './Discover/Discover'
 import { motion, AnimatePresence } from 'framer-motion'
 import Slide from './Slider'
@@ -84,6 +85,21 @@ export const UI = () => {
 	const year = useMemo(() => new Date().getFullYear(), [])
 
 	const [brand, setShowbrand] = useState(true)
+	const [formData, setFormData] = useState({
+		email: '',
+		option: '',
+		message: '',
+	})
+	const [sent, setSent] = useState(false)
+	const handleChange = (e) => {
+		const { name, value } = e.target
+		setFormData({ ...formData, [name]: value })
+	}
+	const handleSubmit = (e) => {
+		e.preventDefault()
+		setSent(true)
+	}
+	console.log(formData)
 	return (
 		<>
 			<main className=' overflow-hidden px-8 md:px-10 z-10 pointer-events-none fixed  inset-0  flex justify-between flex-col '>
@@ -164,7 +180,7 @@ export const UI = () => {
 										setShowbrand(true)
 									}}
 								>
-									contact
+									brand
 								</a>
 								<button className='px-8 py-2 text-black bg-transparent border-[#a6a6a6] border rounded-full'>
 									{year}
@@ -461,23 +477,29 @@ export const UI = () => {
 											Send us an email
 										</h1>
 										<motion.form
-											className='flex flex-col items-center gap-4'
+											className='flex flex-col items-center gap-4 '
 											key='form'
 											variants={textBoxVariant}
 											initial='hidden'
 											animate='visible'
+											onSubmit={handleSubmit}
 										>
 											<motion.input
-												type='text'
+												name='email'
+												type='email'
 												placeholder='enter your email e.g  user@gmail.com'
-												className='bg-gray-800 px-2 h-10 rounded-xl'
+												className='bg-gray-800 w-full px-2 h-10 rounded-xl'
 												variants={listBoxVariant}
+												onChange={handleChange}
+												value={formData.email}
+												required
 											/>
 											<motion.select
 												name='option'
-												id=''
 												className='appearance-none bg-green-400 px-2 h-10 rounded-xl w-full'
 												variants={listBoxVariant}
+												onChange={handleChange}
+												value={formData.option}
 											>
 												<option value='volunteer'> Volunteer</option>
 												<option value='reachout'> Reach out</option>
@@ -489,10 +511,14 @@ export const UI = () => {
 												className='bg-gray-800 rounded-xl max-h-200px px-4 h-24 resize-none'
 												placeholder='send us a message'
 												variants={listBoxVariant}
+												onChange={handleChange}
+												value={formData.message}
+												required
 											></motion.textarea>
 											<motion.button
 												className='pointer-events-auto bg-green-400 rounded-xl h-10 w-20 hover:scale-125 duration-200'
 												variants={listBoxVariant}
+												type='submit'
 											>
 												Send
 											</motion.button>
@@ -540,13 +566,26 @@ export const UI = () => {
 				<footer className='px-8 w-full flex justify-end'>
 					<p className='text-2xl font-sans font-thin'>{year}</p>
 				</footer>
+				{sent && (
+					<div className='w-screen h-screen fixed top-o bg-black/10 backdrop-blur-[4px] flex justify-center items-center z-50 p-20'>
+						<motion.div
+							initial={{ scale: 0 }}
+							animate={{ scale: 1 }}
+							className='flex flex-col w-42 h-max bg-black rounded-3xl items-center justify-center p-8 relative text-white shadow-lg shadow-slate-900 '
+						>
+							<Lottie animationData={approved} loop={false} className='w-20' />
+							<h1 className='text-3xl'>Your message has been received</h1>
+							<p>We will reach out to you as soon as possible</p>
+							<motion.button
+								className='pointer-events-auto bg-green-400 rounded-xl h-10 max-w-20 hover:scale-125 duration-200 text-white mt-6 px-2'
+								onClick={() => setSent(false)}
+							>
+								cancel
+							</motion.button>
+						</motion.div>
+					</div>
+				)}
 			</div>
 		</>
 	)
 }
-
-// ;<Lottie
-// 	animationData={gif2}
-// 	loop={true}
-// 	className='absolute -bottom-10 right-[0px] w-36 rotate-90 [transform:rotateY(180deg)] [rotate:-90deg]'
-// />
